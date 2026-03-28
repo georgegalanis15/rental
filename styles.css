@@ -417,6 +417,14 @@ ul { list-style: none; }
   position: relative;
 }
 
+.about-photo {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
 .image-placeholder {
   aspect-ratio: 4/5;
   background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent), #fff 30%));
@@ -560,31 +568,14 @@ ul { list-style: none; }
   color: var(--color-text-light);
 }
 
-.map-placeholder {
+.map-embed {
+  width: 100%;
   aspect-ratio: 1;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border: none;
   border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: var(--color-white);
+  box-shadow: var(--shadow-lg);
   position: sticky;
   top: 120px;
-}
-
-.map-placeholder span {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.map-sub {
-  font-family: var(--font-body) !important;
-  font-size: 0.9rem !important;
-  font-weight: 400 !important;
-  opacity: 0.7;
 }
 
 /* ========== Gallery ========== */
@@ -884,7 +875,7 @@ ul { list-style: none; }
   }
 
   .about-image { order: -1; }
-  .about-image .image-placeholder { aspect-ratio: 16/9; }
+  .about-photo { aspect-ratio: 16/9; }
 
   .highlights-grid {
     grid-template-columns: 1fr;
@@ -989,7 +980,7 @@ ul { list-style: none; }
     gap: 32px;
   }
 
-  .map-placeholder {
+  .map-embed {
     position: static;
     aspect-ratio: 16/10;
   }

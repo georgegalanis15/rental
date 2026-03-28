@@ -44,7 +44,7 @@ const observer = new IntersectionObserver((entries) => {
 // Add animation classes and observe elements
 document.querySelectorAll(
   '.about-text, .about-image, .amenity-card, .location-info, .location-map, ' +
-  '.gallery-item, .highlight-card, .booking-card'
+  '.gallery-item, .video-tour, .booking-card'
 ).forEach(el => {
   el.classList.add('animate-on-scroll');
   observer.observe(el);
@@ -64,14 +64,63 @@ style.textContent = `
   }
   .amenity-card.animate-on-scroll { transition-delay: calc(var(--i, 0) * 0.08s); }
   .gallery-item.animate-on-scroll { transition-delay: calc(var(--i, 0) * 0.08s); }
-  .highlight-card.animate-on-scroll { transition-delay: calc(var(--i, 0) * 0.1s); }
 `;
 document.head.appendChild(style);
 
 // Stagger animations for grid items
 document.querySelectorAll('.amenity-card').forEach((el, i) => el.style.setProperty('--i', i));
 document.querySelectorAll('.gallery-item').forEach((el, i) => el.style.setProperty('--i', i));
-document.querySelectorAll('.highlight-card').forEach((el, i) => el.style.setProperty('--i', i));
+
+// Lightbox for gallery images
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const galleryImages = document.querySelectorAll('.gallery-item .gallery-img');
+let currentIndex = 0;
+
+galleryImages.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    currentIndex = index;
+    lightboxImg.src = img.src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+document.querySelector('.lightbox-close').addEventListener('click', () => {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+});
+
+document.querySelector('.lightbox-prev').addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+  lightboxImg.src = galleryImages[currentIndex].src;
+});
+
+document.querySelector('.lightbox-next').addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % galleryImages.length;
+  lightboxImg.src = galleryImages[currentIndex].src;
+});
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  } else if (e.key === 'ArrowLeft') {
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    lightboxImg.src = galleryImages[currentIndex].src;
+  } else if (e.key === 'ArrowRight') {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    lightboxImg.src = galleryImages[currentIndex].src;
+  }
+});
 
 // Smooth scroll for anchor links (fallback for browsers without CSS scroll-behavior)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

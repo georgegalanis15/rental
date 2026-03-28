@@ -609,52 +609,79 @@ ul { list-style: none; }
   display: block;
 }
 
-/* ========== Highlights / Testimonials ========== */
-.highlights {
-  padding: 100px 0;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+/* ========== Lightbox ========== */
+.gallery-item {
+  cursor: pointer;
 }
 
-.highlights-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
 }
 
-.highlight-card {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius-md);
-  padding: 32px;
-  transition: var(--transition);
-}
-
-.highlight-card:hover {
-  background: rgba(255,255,255,0.12);
-  transform: translateY(-4px);
-}
-
-.highlight-quote {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  color: var(--color-accent);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.highlight-card p {
-  color: rgba(255,255,255,0.9);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin-bottom: 16px;
-}
-
-.highlight-stars {
+.lightbox.active {
   display: flex;
-  gap: 4px;
-  color: var(--color-accent);
 }
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 60px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 10001;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.lightbox-close:hover { opacity: 1; }
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  opacity: 1;
+  background: rgba(255,255,255,0.2);
+}
+
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
 
 /* ========== Booking CTA ========== */
 .booking {
@@ -866,11 +893,7 @@ ul { list-style: none; }
   .about-image { order: -1; }
   .about-photo { aspect-ratio: 16/9; }
 
-  .highlights-grid {
-    grid-template-columns: 1fr;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+
 
   .footer-content {
     grid-template-columns: 1fr 1fr;

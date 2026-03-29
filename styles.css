@@ -734,6 +734,10 @@ ul { list-style: none; }
   margin-bottom: 28px;
 }
 
+.booking-description.center {
+  text-align: center;
+}
+
 .booking-features {
   display: flex;
   flex-direction: column;
@@ -850,17 +854,22 @@ ul { list-style: none; }
 }
 
 /* ========== Guesty Booking Widget ========== */
-.guesty-section {
+#booking {
   padding: 100px 0;
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
 }
 
-.guesty-section .section-label {
+#booking > .container > .section-label {
   color: var(--color-accent-light);
 }
 
-.guesty-section .section-title {
+#booking > .container > .section-title {
   color: var(--color-white);
+  margin-bottom: 16px;
+}
+
+#booking > .container > .booking-description {
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 40px;
 }
 

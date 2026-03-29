@@ -853,34 +853,6 @@ ul { list-style: none; }
   display: block;
 }
 
-/* ========== Guesty Booking Widget ========== */
-#booking {
-  padding: 100px 0;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-}
-
-#booking > .container > .section-label {
-  color: var(--color-accent-light);
-}
-
-#booking > .container > .section-title {
-  color: var(--color-white);
-  margin-bottom: 16px;
-}
-
-#booking > .container > .booking-description {
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 40px;
-}
-
-.guesty-widget-wrapper {
-  max-width: 900px;
-  margin: 0 auto;
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  box-shadow: var(--shadow-lg);
-}
 
 /* ========== Footer ========== */
 .footer {

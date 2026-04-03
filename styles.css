@@ -271,6 +271,15 @@ ul { list-style: none; }
   margin-bottom: 20px;
 }
 
+.hero-rental-type {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--color-gold);
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
 .hero-subtitle {
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: rgba(255,255,255,0.8);

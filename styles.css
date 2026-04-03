@@ -272,9 +272,9 @@ ul { list-style: none; }
 }
 
 .hero-rental-type {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  color: var(--color-gold);
-  font-weight: 400;
+  font-size: clamp(1.3rem, 3vw, 1.85rem);
+  color: var(--color-white);
+  font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 16px;
